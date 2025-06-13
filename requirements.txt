@@ -18,3 +18,5 @@ sentence-transformers
 
 # Optional (if you're reading JSONL or handling file IO)
 tqdm
+
+requests

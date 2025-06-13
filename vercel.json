@@ -1,0 +1,8 @@
+{
+  "builds": [
+    { "src": "tds_virtual_ta_api.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "tds_virtual_ta_api.py" }
+  ]
+}

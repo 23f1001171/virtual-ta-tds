@@ -8,7 +8,7 @@ import uvicorn
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 import traceback
 from dotenv import load_dotenv
@@ -313,6 +313,13 @@ async def root():
         },
         "usage": "Send POST requests to /ask with JSON: {\"question\": \"your question\", \"image\": \"optional base64 image\"}"
     }
+
+
+@app.post("/query")
+async def query(request: Request):
+    data = await request.json()
+    question = data.get("question", "")
+    return {"answer": f"You asked: {question}"}
 
 if __name__ == "__main__":
     # For local testing
